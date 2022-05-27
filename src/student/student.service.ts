@@ -59,7 +59,7 @@ export class StudentService {
   async putStudentById(bodyContent) {
     const url = 'http://localhost:4000/students/';
     const { data } = await firstValueFrom(
-      this.httpService.put(url, { data: bodyContent }),
+      this.httpService.put(url, bodyContent),
     );
     console.log(data);
     return data;
