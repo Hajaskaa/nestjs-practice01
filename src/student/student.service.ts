@@ -35,18 +35,22 @@ export class StudentService {
 
   async deleteStudentById(bodyContent) {
     const url = 'http://localhost:4000/students/';
+    console.log('bodyContent:');
     console.log(bodyContent);
+    //console.log('bodyContent.body');
+    //console.log(bodyContent.body);
     const { data } = await firstValueFrom(
-      this.httpService.delete(url, bodyContent),
-    );
-    console.log(data);
+      this.httpService.delete(url, { data: bodyContent }),
+    ); //payload is the request body
+    console.log('deleteData:');
+    //console.log(foo);
     return data;
   }
 
   async postStudentById(bodyContent) {
     const url = 'http://localhost:4000/students/';
     const { data } = await firstValueFrom(
-      this.httpService.post(url, bodyContent),
+      this.httpService.post(url, bodyContent), //payload is the body of the request
     );
     console.log(data);
     return data;
@@ -55,7 +59,7 @@ export class StudentService {
   async putStudentById(bodyContent) {
     const url = 'http://localhost:4000/students/';
     const { data } = await firstValueFrom(
-      this.httpService.put(url, bodyContent),
+      this.httpService.put(url, { data: bodyContent }),
     );
     console.log(data);
     return data;
