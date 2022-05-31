@@ -1,7 +1,7 @@
 import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
-import { StudentController } from 'src/student/student.controller';
-import { StudentService } from 'src/student/student.service';
+import { StudentController } from '../student/student.controller';
+import { StudentService } from '../student/student.service';
 
 @Module({
   imports: [HttpModule],
@@ -9,3 +9,12 @@ import { StudentService } from 'src/student/student.service';
   providers: [StudentService],
 })
 export class AppModule {}
+
+/*@Module({
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: HttpServiceInterceptor,
+    },
+  ],
+})*/

@@ -3,18 +3,22 @@ import {
   Controller,
   Delete,
   Get,
-  Param,
+  Headers,
   Post,
   Put,
+  UseInterceptors,
 } from '@nestjs/common';
+import { HttpServiceInterceptor } from '../interceptors/authentication.interceptor';
 import { StudentService } from './student.service';
 
+@UseInterceptors(HttpServiceInterceptor) //through interceptor
 @Controller('students')
 export class StudentController {
   constructor(private readonly studentService: StudentService) {}
 
   @Get()
-  getAllStudents() {
+  getAllStudents(@Headers() headersRequest) {
+    console.log('headers: ', headersRequest);
     return this.studentService.getAllStudents();
   }
 

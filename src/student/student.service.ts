@@ -18,10 +18,16 @@ export class StudentService {
     );
   }*/
 
+  headersRequest = {
+    'Content-Type': 'application/json', // test
+    authOkosba: 'supersafe',
+  };
   async getAllStudents() {
     //WITH firstValueFrom
     const url = 'http://localhost:4000/students';
-    const { data } = await firstValueFrom(this.httpService.get(url));
+    const { data } = await firstValueFrom(
+      this.httpService.get(url, { headers: this.headersRequest }), //through axio
+    );
     console.log(data);
     return data;
   }
