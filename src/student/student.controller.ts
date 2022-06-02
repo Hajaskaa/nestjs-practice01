@@ -11,8 +11,8 @@ import {
 import { HttpServiceInterceptor } from '../interceptors/authentication.interceptor';
 import { StudentService } from './student.service';
 
-@UseInterceptors(HttpServiceInterceptor) //through interceptor
 @Controller('students')
+@UseInterceptors(HttpServiceInterceptor) //through interceptor
 export class StudentController {
   constructor(private readonly studentService: StudentService) {}
 
